@@ -9,7 +9,15 @@
 ## cached inverse matrix (if calculated)) and theMatrix (holds the initial/current matrix
 ## object).
 ## Expected Usage:
-##          
+##      1. Create a matrix object (e.g. matA <- matrix(data = c(4,3,3,2), nrow=2, ncol=2 ))
+##      2. Create a makeCacheMatrix object using object from (1)
+##          (e.g. x <- makeCacheMatrix(matA))
+##      3. Now test calculating the Inverse matrix of matA (or disguised as x)
+##          (e.g. xI <- cacheSolve(x))
+##      The first time invoking cacheSolve(x) the actual inverse of x will be computed (no message)
+##      All subsequent calls will print the message "getting cached data" because it
+##      will detect that the makeCacheMatrix object already has the inverse!
+
 makeCacheMatrix <- function(theMatrix = matrix()) {
     inverseM <- NULL
     # Use to establish/set initial matrix x
